@@ -1,0 +1,33 @@
+@import '../../style/template.scss';
+
+.background {
+    // border: 2px solid green;
+    width: 100vw;
+    height: 100vh;
+    background-color: #E6E6E6;
+    position: absolute;
+    overflow: hidden;
+
+    >.left {
+        // border: 2px solid red;
+        width: 50vw;
+        height: 50vw;
+        border-radius: 100vw;
+        position: absolute;
+        bottom: -22rem;
+        left: -9rem;
+        background-color: $messageColor;
+    }
+
+    >.right {
+        // border: 2px solid blue;
+        width: 50vw;
+        height: 50vw;
+        border-radius: 100vw;
+        position: absolute;
+        top: -22rem;
+        right: -9rem;
+        background-color: $navBgColor;
+    }
+
+}

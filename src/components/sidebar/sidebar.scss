@@ -1,0 +1,109 @@
+@import "../../style/template.scss";
+
+.leftSidebar {
+    // border: 2px solid red;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 18% 70% 12%;
+    background-color: $navBgColor;
+
+    >.profilePicture {
+        // border: 2px solid blue;
+        display: flex;
+
+        >div {
+            margin: auto;
+            width: 3.5vw;
+            height: 3.5vw;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+
+
+
+            >.isOnline {
+                // border: 2px solid red;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 1vw;
+                height: 1vw;
+                border-radius: 100%;
+                background-color: $isOnline;
+                border: 3.5px solid $navBgColor;
+
+            }
+
+
+
+            >img {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 100%;
+                overflow: hidden;
+
+
+
+            }
+        }
+    }
+
+    >.options {
+        // border: 2px solid red;
+        font-size: x-large;
+        color: $optionsIcons;
+        margin: auto;
+
+        >div {
+            margin: 2rem 0rem;
+            position: relative;
+
+
+            >.isNotification {
+                // border: 2px solid red;
+                position: absolute;
+                width: .35vw;
+                height: .35vw;
+                background-color: $isOnline;
+                border-radius: 100%;
+                right: -5px;
+                top: -5px;
+
+            }
+
+            >span {
+                cursor: pointer;
+
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+
+
+    }
+
+    >.logoutBtn {
+        // border: 2px solid red;
+
+        margin: auto;
+
+        >div {
+
+            >button {
+                color: $optionsIcons;
+                cursor: pointer;
+                background-color: transparent;
+                border: none;
+                font-size: x-large;
+
+
+                &:hover {
+                    color: white;
+                }
+            }
+        }
+
+    }
+
+}

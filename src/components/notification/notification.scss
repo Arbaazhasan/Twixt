@@ -1,0 +1,101 @@
+@import '../../style/template.scss';
+
+.notification {
+    // border: 2px solid red;
+    font-family: $thinFont;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0rem .7rem;
+    cursor: pointer;
+    position: relative;
+
+
+    &:last-child {
+        margin-bottom: 1.5rem;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        border-bottom: 1px solid $fontColor;
+        width: 93%;
+    }
+
+    &:hover {
+        background-color: rgba(192, 192, 192, 0.421);
+    }
+
+
+    >.profilePicture {
+
+        >div {
+            width: 3.5vw;
+            height: 3.5vw;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+
+            >img {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 100%;
+                overflow: hidden;
+                border: 4px solid $messageColor;
+                background-color: white;
+
+            }
+        }
+    }
+
+
+    >.usernameAndLastMessage {
+        // border: 2px solid blue;
+        font-weight: 850;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 55%;
+
+        >p {
+            font-size: medium;
+        }
+    }
+
+    >.timeAndNotification {
+        // border: 2px solid green;
+        height: 5rem;
+        width: 5rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: right;
+
+
+        >.timeAndDate {
+            color: $fontColor;
+            text-transform: uppercase;
+            font-size: small;
+            position: absolute;
+            top: 7px;
+        }
+
+        >.request {
+            border: 2px solid red;
+            font-size: small;
+            padding: .1vw .3vw;
+            border: 3px solid $messageColor;
+            border-radius: 10%;
+            cursor: pointer;
+            font-weight: bold;
+
+            &:hover {
+                color: white;
+                background-color: $messageColor;
+            }
+
+        }
+    }
+
+}

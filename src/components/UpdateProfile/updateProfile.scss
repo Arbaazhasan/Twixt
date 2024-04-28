@@ -1,0 +1,96 @@
+@import "../../style/template.scss";
+
+.updateProfile {
+
+    position: absolute;
+    z-index: 100;
+    width: 90%;
+    height: 100%;
+
+    background-color: rgba(139, 139, 139, 0.89);
+    backdrop-filter: blur(100px);
+    box-shadow: 0px 0px 8px gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >.closeWindow {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+
+
+        >span {
+            height: 1.5rem;
+            width: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: red;
+            cursor: pointer;
+
+            &:hover {
+                background-color: red;
+                color: white;
+            }
+        }
+
+
+
+    }
+
+    >table {
+        >tbody {
+            display: grid;
+            gap: 20px;
+
+            >tr {
+
+                >td {
+                    // border: 2px solid red;
+                    width: 100px;
+
+                    >span {
+                        font-weight: bold;
+                        font-size: large;
+
+                    }
+
+                    >input {
+
+                        background-color: transparent;
+                        border: 2px solid $messageColor;
+                        padding: .5rem 1rem;
+                        font-size: large;
+
+                        &:focus {
+                            outline: none;
+                        }
+
+                    }
+
+                    >button {
+                        float: right;
+                        padding: .5rem 1rem;
+                        margin-left: 11rem;
+                        border: 3px solid $messageColor;
+                        background-color: transparent;
+                        color: $messageColor;
+                        font-weight: bold;
+                        cursor: pointer;
+
+
+                        &:hover {
+                            background-color: $messageColor;
+                            color: white;
+                        }
+
+
+                    }
+
+                }
+            }
+
+        }
+    }
+}

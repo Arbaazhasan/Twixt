@@ -1,0 +1,96 @@
+@import '../../style/template.scss';
+
+.settings {
+    // border: 2px solid blue;
+    height: 100%;
+    padding-top: 5%;
+    font-family: $thinFont;
+    position: relative;
+
+
+    >.profilePicture {
+        // border: 2px solid blue;
+        display: flex;
+        justify-content: center;
+
+        >div {
+            width: 6vw;
+            height: 6vw;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+
+            >img {
+                max-width: 100%;
+                max-height: 100%;
+                border-radius: 100%;
+                overflow: hidden;
+                border: 5px solid $messageColor;
+                background-color: white;
+
+            }
+        }
+    }
+
+    >.nameAndUsername {
+        // border: 2px solid red;
+        text-align: center;
+
+
+        >div {
+            // border: 2px solid green;
+            padding: 1rem;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.449);
+
+
+
+            >p {
+                font-weight: bold;
+                font-size: x-large;
+                cursor: pointer;
+            }
+
+            >span {
+                color: gray;
+                cursor: pointer;
+            }
+
+        }
+    }
+
+    >.options {
+        // border: 2px solid red;
+
+
+        >div {
+            // border: 2px solid red;
+            padding: .8rem;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.449);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: medium;
+
+            &:hover {
+                background-color: $navBgColor;
+                color: $messageColor;
+                font-weight: bold;
+                border-right: 5px solid $messageColor;
+
+            }
+
+        }
+
+    }
+
+    >.appVersion {
+        // border: 2px solid red;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        color: gray;
+        font-size: medium;
+    }
+
+}

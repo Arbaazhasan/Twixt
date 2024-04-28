@@ -1,0 +1,31 @@
+@import '../../style/template.scss';
+
+.notificaitons {
+    // border: 2px solid red;
+    height: 100%;
+
+    >.heading {
+        // border: 2px solid green;
+        text-transform: uppercase;
+        font-family: $thinFont;
+        font-size: .7rem;
+        color: $fontColor;
+        font-weight: bolder;
+        height: 5%;
+        padding-left: .9rem;
+
+    }
+
+    >.notificationContainer {
+        // border: 2px solid red;
+        height: 95%;
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+    }
+
+
+}

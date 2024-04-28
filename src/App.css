@@ -1,0 +1,13 @@
+.app {
+    width: 100vw;
+    min-height: 45.5rem;
+    height: 100vh;
+    display: flex;
+    box-sizing: border-box;
+    
+    /*     
+    background-image: url('../public/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+
+}

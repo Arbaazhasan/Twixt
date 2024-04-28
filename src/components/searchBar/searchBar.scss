@@ -1,0 +1,53 @@
+@import '../../style/template.scss';
+
+.searchBar {
+    // border: 2px solid red;
+    color: $fontColor;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 12%;
+
+
+    >.searchBox {
+        // border: 2px solid green;
+        display: flex;
+        background-color: #eeeeee82;
+        align-items: center;
+        border-radius: 30vw;
+        padding: 0rem .6rem;
+        width: 90%;
+
+
+        >span {
+            font-size: x-large;
+        }
+
+        >input {
+            padding: .5rem;
+            width: 92%;
+            border: transparent;
+            font-family: $thinFont;
+            font-weight: bolder;
+            background-color: transparent;
+
+
+            &::placeholder {
+                color: $fontColor;
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+        }
+    }
+
+    >.searchHistory {
+        >span {
+            font-size: x-large;
+        }
+
+    }
+
+}

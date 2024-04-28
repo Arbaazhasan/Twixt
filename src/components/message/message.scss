@@ -1,0 +1,157 @@
+@import "../../style/template.scss";
+
+
+.messagesContainer {
+
+    // border: 2px solid blue;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        background-color: rgba(198, 198, 198, 0.377);
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(51, 51, 51);
+    }
+
+    >.sernderMessagesContainer {
+
+        // border: 2px solid red;
+        padding: .5rem 1rem;
+        display: flex;
+        align-items: end;
+        gap: 20px;
+
+        >.profileIcon {
+            // border: 2px solid red;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            overflow: hidden;
+
+            >img {
+                max-width: 100%;
+                max-height: 100%;
+
+            }
+        }
+
+
+
+
+        >.messageContainer {
+            // border: 2px solid green;
+            background-color: white;
+            max-width: 60%;
+            padding: .7rem;
+            border-radius: 1vw;
+            // background-color :white;
+            font-family: $thinFont;
+            font-weight: bold;
+            position: relative;
+
+            &::after {
+                content: "";
+                // border: 2px solid orangered;
+                position: absolute;
+                width: 30px;
+                height: 15px;
+                left: -16px;
+                bottom: 0;
+                border-top-left-radius: 100%;
+                border-bottom-right-radius: -100%;
+                background-color: white;
+            }
+
+
+            >.message {
+                // border: 2px solid red;
+                margin-bottom: .2rem;
+                font-size: 1rem;
+            }
+
+            >.timestamp {
+                text-align: right;
+                font-size: small;
+                color: black;
+                font-weight: normal;
+                text-transform: uppercase;
+                color: $fontColor;
+
+            }
+        }
+
+    }
+
+
+
+    .reciverMessagesContainer {
+
+        // border: 2px solid red;
+        padding: .5rem 1rem;
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        gap: 20px;
+
+        >.profileIcon {
+            // border: 2px solid red;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            overflow: hidden;
+
+            >img {
+                max-width: 100%;
+                max-height: 100%;
+
+            }
+        }
+
+        >.messageContainer {
+            // border: 2px solid green;
+            background-color: $messageColor;
+            max-width: 60%;
+            padding: .7rem;
+            border-radius: 1vw;
+            // background-color :white;
+            font-family: $thinFont;
+            font-weight: bold;
+            position: relative;
+            color: white;
+
+            &::after {
+                content: "";
+                // border: 2px solid orangered;
+                position: absolute;
+                width: 30px;
+                height: 15px;
+                right: -16px;
+                bottom: 0;
+                border-top-right-radius: 100%;
+                border-bottom-right-radius: -100%;
+                background-color: $messageColor;
+
+            }
+
+
+
+            >.message {
+                // border: 2px solid red;
+                margin-bottom: .2rem;
+            }
+
+            >.timestamp {
+                text-align: right;
+                font-size: small;
+                color: black;
+                font-weight: normal;
+                text-transform: uppercase;
+                color: $fontColor;
+
+            }
+        }
+
+    }
+}
