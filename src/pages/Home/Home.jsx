@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../../components/sidebar/Sidebar';
 
 import './home.scss';
@@ -10,9 +10,18 @@ import Settings from '../../components/settings/Settings';
 import Profile from '../../components/Profile/Profile';
 import UpdatePassword from '../../components/UpdatePassword/UpdatePassword';
 import Connections from '../../components/Connections/Connections';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
 
+    const dispatch = useDispatch();
+    const { sideBarArray, settingArray } = useSelector(state => state.appFunctions);
+
+    useEffect(() => {
+
+        console.log(sideBarArray);
+
+    }, [sideBarArray, settingArray]);
 
     return (
         <div className='homePage'>
@@ -27,43 +36,71 @@ const Home = () => {
 
                 <SearchBar />
 
-                {/* <div className="chats">
-                    <Conversations chatType="Pinned" />
-                    <Conversations chatType="Chats" />
-                </div> */}
-                {/* 
-                <div className="chats">
-                    <Conversations chatType="groups" />
-                </div> */}
-
-                {/* <div className="chats">
-                    <Conversations chatType="Archive" />
-                </div> */}
-
-                {/* 
-
-                <div className="notifications">
-                    <Notifications />
-
-                </div> */}
+                {
+                    sideBarArray[0] &&
+                    <div className="chats">
+                        <Conversations chatType="Pinned" />
+                        <Conversations chatType="Chats" />
+                    </div>
+                }
 
 
-                <div className="notifications">
-                    <Settings />
+                {
+                    sideBarArray[1] &&
 
-                </div>
+                    <div className="notifications">
+                        <Notifications />
+
+                    </div>
+                }
+
+                {
+                    sideBarArray[2] &&
+                    <div className="chats">
+                        <Conversations chatType="Groups" />
+                    </div>
+                }
+
+                {
+                    sideBarArray[3] &&
+                    <div className="chats">
+                        <Conversations chatType="Archive" />
+                    </div>
+
+                }
+
+
+                {
+                    sideBarArray[4] &&
+                    <div className="notifications">
+                        <Settings />
+
+                    </div>
+                }
 
             </div>
 
             <div className='messages'>
+
                 {/* <Messages /> */}
 
-                {/* <Profile /> */}
+                {
+                    settingArray[0] &&
+                    <Profile />
+                }
 
-                {/* <UpdatePassword /> */}
+                {
+                    settingArray[1] &&
+                    <UpdatePassword />
 
 
-                {/* <Connections /> */}
+                }
+
+                {
+                    settingArray[2] &&
+                    <Connections />
+                }
+
 
 
             </div>

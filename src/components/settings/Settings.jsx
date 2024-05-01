@@ -1,7 +1,18 @@
 import React from 'react';
 import './settings.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { settingOptions } from '../../redux/reducer/appFunctions';
 
 const Settings = () => {
+
+    const dispatch = useDispatch();
+    const { settingArray } = useSelector(state => state.appFunctions);
+
+    const settingOptionHandler = (index) => {
+        dispatch(settingOptions(index));
+
+    };
+
     return (
         <div className='settings'>
 
@@ -19,29 +30,29 @@ const Settings = () => {
             </div>
 
             <div className="options">
-                <div>
+                <div onClick={() => settingOptionHandler(0)}>
                     <p>Profile</p>
                 </div>
 
-                <div>
+                <div onClick={() => settingOptionHandler(1)}>
                     <p>Update Password</p>
                 </div>
 
-                <div>
+                <div onClick={() => settingOptionHandler(2)}>
                     <p>Connections</p>
                 </div>
 
 
-                <div>
+                <div onClick={() => settingOptionHandler(3)}>
                     <p>Block Users</p>
                 </div>
 
-
+                {/* 
                 <div>
                     <p>Help</p>
-                </div>
+                </div> */}
 
-                <div>
+                <div onClick={() => settingOptionHandler(4)}>
                     <p>About Us</p>
                 </div>
 
