@@ -1,0 +1,25 @@
+@import '../../style/template.scss';
+
+.noChats {
+    // border: 2px solid red;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    >div {
+        // border: 2px solid green;
+        text-align: center;
+        font-family: $thinFont;
+
+        >p {
+            font-size: xxx-large;
+            font-weight: bold;
+        }
+
+        >span {
+            font-size: medium;
+        }
+    }
+}

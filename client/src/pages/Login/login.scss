@@ -1,0 +1,113 @@
+@import "../../style/template.scss";
+
+.login {
+    width: 75%;
+    height: 85%;
+    margin: auto;
+    border-radius: 2.5vw;
+    overflow: hidden;
+    z-index: 100;
+
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(100px);
+    box-shadow: 0px 0px 8px gray;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+    font-family: $thinFont;
+
+
+    >div {
+        font-size: large;
+        text-transform: uppercase;
+    }
+
+    >form {
+
+        // border: 2px solid red;
+        width: 40%;
+        // height: 15vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2.3vw;
+
+        >div {
+
+            >input {
+
+                font-size: medium;
+                padding: 1rem;
+                width: 100%;
+                background-color: transparent;
+                border: 1px solid black;
+
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            >p {
+                color: red;
+                position: absolute;
+                font-size: 1vw;
+
+            }
+
+
+
+            >button {
+                width: 100%;
+                padding: 1rem;
+                font-size: medium;
+                font-weight: bold;
+                color: $messageColor;
+                border: 5px solid $messageColor;
+                background-color: transparent;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $messageColor;
+                    color: white;
+                }
+
+            }
+
+
+        }
+
+        >.gender {
+            // border: 2px solid black;
+            display: flex;
+            gap: 1rem;
+
+            >div:nth-child(2) {
+                // border: 2px solid red;
+                display: flex;
+                gap: 1rem;
+            }
+
+        }
+    }
+
+    >section {
+        >button {
+            font-size: small;
+            color: gray;
+            background-color: transparent;
+            border: transparent;
+            cursor: pointer;
+
+            &:hover {
+                color: red;
+            }
+
+        }
+
+    }
+
+}
