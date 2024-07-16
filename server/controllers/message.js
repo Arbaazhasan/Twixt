@@ -1,5 +1,6 @@
 import { Conversation } from "../modules/conversation.js";
 import { Message } from "../modules/message.js";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) => {
     try {
@@ -30,6 +31,14 @@ export const sendMessage = async (req, res) => {
             await conversation.save();
         }
 
+
+        const reciverSocketId = getReceiverSocketId(reciverId);
+        console.log("reciverSocketId" + reciverSocketId);
+        if (reciverSocketId) {
+            // io.to(<socket_id>).emit() used to send event to specific client
+            io.to(reciverSocketId).emit("newMessage", newMessage);
+        }
+
         res.status(200).json({
             success: true,
             message: newMessage
@@ -42,6 +51,8 @@ export const sendMessage = async (req, res) => {
             message: "Internal Server error from Message Send",
             error: error.message
         });
+
+        console.log(error);
 
     }
 };

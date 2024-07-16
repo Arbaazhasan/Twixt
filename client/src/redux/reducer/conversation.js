@@ -16,29 +16,47 @@ const conversations = createSlice({
 
     reducers: {
 
-        getAllUsersChatsRequest: (state, action) => {
+        getAllUsersRequest: (state, action) => {
             state.loading = true;
             state.error = null;
         },
-        getAllUserChatsSuccess: (state, action) => {
+        getAllUserSuccess: (state, action) => {
             state.loading = false;
             state.allUsersChats = action.payload;
         },
-        getAllUserChatsFail: (state, action) => {
+        getAllUserFail: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
 
 
+        getUserConversationsRequest: (state, action) => {
+            state.loading = true;
+            state.error = null;
+            state.allUsersChats = [];
 
+        },
+        getUserConversationsSuccess: (state, action) => {
+            state.loading = false;
+            state.allUsersChats = action.payload;
+        },
+        getUserConversationsFail: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+        },
 
     }
 });
 
 export const {
-    getAllUsersChatsRequest,
-    getAllUserChatsSuccess,
-    getAllUserChatsFail
+    getAllUsersRequest,
+    getAllUserSuccess,
+    getAllUserFail,
+
+    getUserConversationsRequest,
+    getUserConversationsSuccess,
+    getUserConversationsFail
+
 } = conversations.actions;
 
 export default conversations.reducer;

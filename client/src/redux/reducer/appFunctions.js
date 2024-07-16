@@ -20,7 +20,7 @@ export const appFunctions = createSlice({
 
             state.sideBarArray.map((i, index) => {
                 state.sideBarArray[index] = action.payload === index ? true : false;
-                console.log(i, index);
+                // console.log(i, index);
             });
 
             if (action.payload !== 4) {

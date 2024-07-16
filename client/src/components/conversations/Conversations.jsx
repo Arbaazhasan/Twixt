@@ -23,6 +23,7 @@ const Conversations = ({ chatType }) => {
     useEffect(() => {
 
         // console.log(allUsersChats[0].profilePicture.url);
+        // console.log(allUsersChats);
 
     }, [allUsersChats]);
 
@@ -36,20 +37,14 @@ const Conversations = ({ chatType }) => {
 
 
             {
-                allUsersChats && allUsersChats.map((i) => (
-                    <div key={i._id} onClick={() => conversationHandler(
-                        i._id,
-                        i.name,
-                        i.profilePicture,
-                        i.isOnline,
-                        i.updatedAt,
-                    )}>
+                allUsersChats && allUsersChats?.map((i) => (
+                    <div key={i._id} onClick={() => conversationHandler(i._id, i.name, i.profilePicture, i.isOnline, i.updatedAt,)}>
                         <Conversation
                             userId={i._id}
                             name={i.name}
                             profilePicture={i.profilePicture}
                             messageTime={i.time}
-                            lastMessage={i.lastMessage || "Abd"}
+                            // lastMessage={i.lastMessage || "Abd"}
                             isOnline={i.isOnline}
                             lastSeen={i.updatedAt}
                         />

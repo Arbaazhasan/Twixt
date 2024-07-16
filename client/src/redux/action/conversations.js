@@ -1,13 +1,14 @@
 import axios from "axios";
-import { getAllUserChatsFail, getAllUserChatsSuccess, getAllUsersChatsRequest } from "../reducer/conversation";
 import { server } from "../store";
+import { getAllUserFail, getAllUsersRequest, getAllUserSuccess, getUserConversationsFail, getUserConversationsRequest, getUserConversationsSuccess } from "../reducer/conversation";
 
 
 
-export const getUserAllChats = async (dispatch) => {
+export const getAllUsers = async (dispatch) => {
     try {
 
-        dispatch(getAllUsersChatsRequest());
+        dispatch(getAllUsersRequest());
+
 
 
         const { data } = await axios.post(`${server}/getusers/getusers`, {}, {
@@ -21,14 +22,37 @@ export const getUserAllChats = async (dispatch) => {
 
         // console.log(data.sidebarUser);
 
-        dispatch(getAllUserChatsSuccess(data.sidebarUser));
+        dispatch(getAllUserSuccess(data.sidebarUser));
 
 
     } catch (error) {
 
-        console.log(error.response.data.message);
-        dispatch(getAllUserChatsFail(error.response.data.message));
+        console.log(error);
+        dispatch(getAllUserFail(error.response.data.message));
 
     }
 
+};
+export const getUserConversationsChats = async (dispatch) => {
+    try {
+
+        dispatch(getUserConversationsRequest());
+
+        const { data } = await axios.get(`${server}/getusers/getuserconversations`, {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            withCredentials: true
+        });
+
+        // console.log(data.conversationsArray);
+
+        dispatch(getUserConversationsSuccess(data.conversationsArray));
+
+    } catch (error) {
+        console.error(error);
+
+        // Enhanced error handling
+        dispatch(getUserConversationsFail(error.response.data.message));
+    }
 };

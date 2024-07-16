@@ -31,6 +31,7 @@ export const getUserMessages = async (dispatch, userId, name, profilePicture, is
 };
 
 
+
 export const sentMessage = async (dispatch, reciverId, message) => {
     try {
 
@@ -47,12 +48,24 @@ export const sentMessage = async (dispatch, reciverId, message) => {
         });
 
         // console.log(data);
-        dispatch(sendMessageSuccess());
+        dispatch(sendMessageSuccess(data.message));
 
 
     } catch (error) {
-
         dispatch(sendMessageFail(error.response.data.message));
+
+    }
+};
+
+
+export const getNewSocketMessages = (dispatch, messages, newMessage) => {
+    try {
+
+        dispatch(getNewSocketMessages([...messages, newMessage]));
+
+    } catch (error) {
+
+        console.log(error);
 
     }
 };

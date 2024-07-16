@@ -15,21 +15,22 @@ import NoChat from '../../components/NoChat/NoChat';
 
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserAllChats } from '../../redux/action/conversations';
+import { getUserConversationsChats } from '../../redux/action/conversations';
 
 const Home = () => {
 
     const dispatch = useDispatch();
     const { sideBarArray, settingArray, conversationArray, noConversation } = useSelector(state => state.appFunctions);
 
+
     useEffect(() => {
 
         // console.log(sideBarArray);
 
-        getUserAllChats(dispatch);
 
+        getUserConversationsChats(dispatch);
 
-    }, [sideBarArray, settingArray]);
+    }, []);
 
     return (
         <div className='homePage'>
@@ -54,19 +55,19 @@ const Home = () => {
                 }
 
 
-                {
+                {/* {
                     sideBarArray[1] &&
 
                     <div className="notifications">
                         <Notifications />
 
                     </div>
-                }
+                } */}
 
                 {
                     sideBarArray[2] &&
-                    <div className="chats">
-                        <Conversations chatType="Groups" />
+                    <div className="chats" >
+                        <Conversations chatType="All Users" />
                     </div>
                 }
 

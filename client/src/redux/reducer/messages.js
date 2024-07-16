@@ -22,7 +22,7 @@ const messagesReducer = createSlice({
         },
         getUserMessagesSuccess: (state, action) => {
             state.loading = false;
-            state.messages = action.payload.messages;
+            state.messages = action.payload.messages || [];
             state.reciverData = action.payload.reciverData;
         },
         getUserMessagesFail: (state, action) => {
@@ -37,11 +37,17 @@ const messagesReducer = createSlice({
         },
         sendMessageSuccess: (state, action) => {
             state.sendMessageLoading = false;
+            state.messages = [...state.messages, action.payload];
         },
         sendMessageFail: (state, action) => {
             state.sendMessageLoading = false;
             state.error = action.payload;
+        },
+
+        getNewSocketMessages: (state, action) => {
+            state.messages = [...state.messages, action.payload];
         }
+
 
     }
 });
@@ -54,7 +60,9 @@ export const {
 
     sendMessageRequest,
     sendMessageSuccess,
-    sendMessageFail
+    sendMessageFail,
+
+    getNewSocketMessages
 
 } = messagesReducer.actions;
 

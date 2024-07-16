@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './messages.scss';
 import ProfileHeader from '../profileHeader/ProfileHeader';
 import Message from '../message/Message';
@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 const Messages = () => {
 
     const { conversationArray } = useSelector(state => state.appFunctions);
+
 
     return (
         <>

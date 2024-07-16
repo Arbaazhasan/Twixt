@@ -164,3 +164,21 @@ export const getUser = async (req, res) => {
         });
     }
 };
+
+export const updateOflineTime = async (userId) => {
+
+    try {
+
+        if (userId) {
+            const isUpdate = await User.findByIdAndUpdate(userId, { isOnline: false });
+
+            if (isUpdate)
+                console.log("User Offline ");
+            else
+                console.log("User Online");
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+};

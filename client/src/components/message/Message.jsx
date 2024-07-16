@@ -1,21 +1,30 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "./message.scss";
 import { useSelector } from 'react-redux';
 import { formatTime } from '../../utils/formatTime';
 
 const Message = () => {
 
-    const { messages } = useSelector(state => state.messagesReducer);
+    const { messages: userMessages } = useSelector(state => state.messagesReducer);
     const { userData } = useSelector(state => state.userLogin);
+
+    const [messages, setMessages] = useState();
 
     const lastMessageRef = useRef();
 
 
     useEffect(() => {
+
         setTimeout(() => {
             lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
         }, 100);
-    }, [messages]);
+
+        userMessages && setMessages(userMessages);
+
+        console.log(userMessages);
+
+    }, [messages, userMessages]);
+
 
     return (
         <div className='messagesContainer'>
@@ -26,7 +35,6 @@ const Message = () => {
                     userData._id === i.senderId ?
 
                         <div className="reciverMessagesContainer" key={i._id} ref={lastMessageRef}>
-
 
                             <div className="messageContainer">
 

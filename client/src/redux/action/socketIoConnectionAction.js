@@ -1,10 +1,11 @@
 import { io } from "socket.io-client";
-import { getSocketContextReducer, getSocketIsOnline } from "../reducer/socketContextReducer";
+import { getSocketIsOnline } from "../reducer/socketContextReducer";
+import { useSelector } from "react-redux";
+import { getNewSocketMessages } from "../reducer/messages";
 
 
-export const socketContextAction = (dispatch, userAuthenticated, userData) => {
+export const socketIoConnectionAction = (dispatch, userAuthenticated, userData) => {
 
-    // dispatch(getSocketContextReducer(ScoketContext));
 
     try {
 
@@ -20,19 +21,30 @@ export const socketContextAction = (dispatch, userAuthenticated, userData) => {
                 }
             });
 
+
             socket.on("getOnlineUsers", (users) => {
-                console.log(users);
+                // console.log(users);
                 dispatch(getSocketIsOnline(users));
 
             });
 
+
+
+            socket.on("newMessage", (newMessage) => {
+                // console.log(newMessage.message);
+                dispatch(getNewSocketMessages(newMessage));
+
+            });
+
+
+
             socket.on("connect", () => {
-                console.log("Connected to socket Server");
+                // console.log("Connected to socket Server");
             });
 
 
             socket.on("disconnect", () => {
-                console.log("Disconnected from socket server");
+                // console.log("Disconnected from socket server");
             });
 
             return () => {

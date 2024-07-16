@@ -7,18 +7,14 @@ import Login from './pages/Login/Login';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from './redux/action/userLogin';
-import { ProtectedRoute } from 'protected-route-react';
 import Loading from './components/loading/Loading';
-import { socketContextAction } from './redux/action/socketContextAction';
-import { io } from 'socket.io-client';
-import { getSocketIsOnline } from './redux/reducer/socketContextReducer';
+import { socketIoConnectionAction } from './redux/action/socketIoConnectionAction';
 
 
 function App() {
 
   const { loading: userLoginLoading, userAuthenticated, userData, error: userLoginError } = useSelector(state => state.userLogin);
-  const { loading: conversationsLoading, error: conversationError } = useSelector(state => state.conversations);
+  const { loading: conversationsLoading, error: conversationError, getConversationDataRefresh } = useSelector(state => state.conversations);
   const { loading: messagesReducerLoading, error: messagesError } = useSelector(state => state.messagesReducer);
 
 
@@ -37,20 +33,20 @@ function App() {
 
   useEffect(() => {
 
-    let createSocketConnection;
+    let cleanup;
 
     try {
-      createSocketConnection = socketContextAction(dispatch, userAuthenticated, userData);
+      cleanup = socketIoConnectionAction(dispatch, userAuthenticated, userData);
     } catch (error) {
       console.log(error);
     }
 
     return () => {
-      if (createSocketConnection) createSocketConnection();
+      if (cleanup) cleanup();
     };
 
 
-  }, [userAuthenticated, userData]);
+  }, [userAuthenticated, userData, getConversationDataRefresh]);
 
 
   return (

@@ -6,6 +6,8 @@ import { formatTime } from '../../utils/formatTime';
 
 const ProfileHeader = () => {
     const { reciverData } = useSelector(state => state.messagesReducer);
+    const { socketIsOnline } = useSelector(state => state.socketContextReducer);
+
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -14,15 +16,16 @@ const ProfileHeader = () => {
     };
 
     useEffect(() => {
-        // Any side effects related to reciverData can be handled here
+        // console.log(reciverData);
+
     }, [reciverData]);
 
     return (
         <div className='profileHeader'>
             <div className='profilePicture'>
                 <div>
-                    {reciverData?.isOnline && <div className='isOnline'></div>}
-                    
+                    {socketIsOnline.includes(reciverData.userId) && <div className='isOnline'></div>}
+
                     {reciverData?.profilePicture?.isProfilePictureUpdate ? (
                         <img src={reciverData.profilePicture.url} alt="profile" />
                     ) : (
@@ -38,8 +41,8 @@ const ProfileHeader = () => {
 
             <div className="usernameAndOnlineStatus">
                 <p>{reciverData?.name}</p>
-                {reciverData?.isOnline ? (
-                    <p>Online</p>
+                {socketIsOnline?.includes(reciverData.userId) ? (
+                    <p style={{ color: "#35D760" }}>Online</p>
                 ) : (
                     <p>
                         Offline <strong>.</strong> {`Last seen ${formatTime(reciverData?.updatedAt)}`}

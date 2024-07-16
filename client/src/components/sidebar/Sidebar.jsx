@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './sidebar.scss';
 
-import { Link } from 'react-router-dom';
 
 import { GoHomeFill } from "react-icons/go";
 import { IoNotificationsSharp } from "react-icons/io5";
@@ -13,6 +12,8 @@ import { FiSend } from "react-icons/fi";
 import { useDispatch, useSelector } from 'react-redux';
 import { sideBarOptions } from '../../redux/reducer/appFunctions';
 import { userLogout } from '../../redux/action/userLogin';
+import { getAllUsers, getUserConversationsChats } from '../../redux/action/conversations';
+
 
 
 const Sidebar = () => {
@@ -35,7 +36,7 @@ const Sidebar = () => {
 
     useEffect(() => {
         // console.log(userData);
-        console.log("socketIsOnline", socketIsOnline);
+        // console.log("socketIsOnline", socketIsOnline);
 
     }, [sideBarArray, socketIsOnline]);
 
@@ -68,25 +69,25 @@ const Sidebar = () => {
             </div>
 
             <div className='options'>
-                <div onClick={() => sideBarHandler(0)}>
+                <div onClick={() => { sideBarHandler(0); getUserConversationsChats(dispatch); }}>
                     <div className='isNotification'></div>
                     <span style={{ color: sideBarArray[0] ? "white" : "gray" }}><  FiSend /></span>
                 </div>
 
-                <div onClick={() => sideBarHandler(1)}>
+                {/* <div onClick={() => sideBarHandler(1)}>
                     <div className='isNotification'></div>
                     <span style={{ color: sideBarArray[1] ? "white" : "gray" }}><  IoNotificationsSharp /></span>
-                </div>
+                </div> */}
 
-                <div onClick={() => sideBarHandler(2)}>
+                <div onClick={() => { sideBarHandler(2); getAllUsers(dispatch); }}>
                     <div className='isNotification'></div>
                     <span style={{ color: sideBarArray[2] ? "white" : "gray" }}><  MdGroups /></span>
                 </div>
-
+                {/* 
                 <div onClick={() => sideBarHandler(3)}>
                     <div className='isNotification'></div>
                     <span style={{ color: sideBarArray[3] ? "white" : "gray" }}><  IoMdArchive /></span>
-                </div>
+                </div> */}
 
                 <div onClick={() => sideBarHandler(4)}>
                     <span style={{ color: sideBarArray[4] ? "white" : "gray" }}><  IoMdSettings /></span>
