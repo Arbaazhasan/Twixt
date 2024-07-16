@@ -51,7 +51,7 @@ const ProfileHeader = () => {
             </div>
 
             <div className="list">
-                <label htmlFor="" onClick={listHandler}><SlOptionsVertical /></label>
+                {/* <label htmlFor="" onClick={listHandler}><SlOptionsVertical /></label> */}
                 <div className="listItems" style={{ display: isOpen ? "block" : "none" }}>
                     <p>User Profile</p>
                     <p>Delete Chat</p>
