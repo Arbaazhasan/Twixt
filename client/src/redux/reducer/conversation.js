@@ -45,6 +45,22 @@ const conversations = createSlice({
             state.error = action.payload;
         },
 
+
+
+        getSearchUserRequest: (state, action) => {
+            state.loading = true;
+            state.allUsersChats = null;
+        },
+
+        getSearchUserSuccess: (state, action) => {
+            state.loading = false;
+            state.allUsersChats = action.payload;
+        },
+
+        getSearchUserFail: (state, action) => {
+            state.loading = false;
+        }
+
     }
 });
 
@@ -55,7 +71,11 @@ export const {
 
     getUserConversationsRequest,
     getUserConversationsSuccess,
-    getUserConversationsFail
+    getUserConversationsFail,
+
+    getSearchUserRequest,
+    getSearchUserSuccess,
+    getSearchUserFail
 
 } = conversations.actions;
 

@@ -80,6 +80,13 @@ const Home = () => {
                     </div>
                 }
 
+                {
+                    sideBarArray[5] &&
+                    <div className="chats" >
+                        <Conversations chatType="Search Result" />
+                    </div>
+                }
+
             </div>
 
             <div className='messages'>
@@ -103,7 +110,6 @@ const Home = () => {
                 {
                     settingArray[1] &&
                     <UpdatePassword />
-
 
                 }
 

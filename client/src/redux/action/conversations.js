@@ -1,6 +1,6 @@
 import axios from "axios";
 import { server } from "../store";
-import { getAllUserFail, getAllUsersRequest, getAllUserSuccess, getUserConversationsFail, getUserConversationsRequest, getUserConversationsSuccess } from "../reducer/conversation";
+import { getAllUserFail, getAllUsersRequest, getAllUserSuccess, getSearchUserFail, getSearchUserRequest, getSearchUserSuccess, getUserConversationsFail, getUserConversationsRequest, getUserConversationsSuccess } from "../reducer/conversation";
 
 
 
@@ -54,5 +54,34 @@ export const getUserConversationsChats = async (dispatch) => {
 
         // Enhanced error handling
         dispatch(getUserConversationsFail(error.response.data.message));
+    }
+};
+
+
+
+export const getSearchUser = async (dispatch, username) => {
+    try {
+
+        dispatch(getSearchUserRequest());
+
+
+        const { data } = await axios.post(`${server}/user/searchuser`, {
+            username
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+            withCredentials: true
+        });
+
+        // console.log(data.message);
+
+        dispatch(getSearchUserSuccess(data.message));
+
+    } catch (error) {
+
+        dispatch(getSearchUserFail(error.response.data.message));
+        console.log(error.message);
+
     }
 };

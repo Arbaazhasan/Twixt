@@ -1,24 +1,47 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './searchBar.scss';
 
 import { IoSearch } from "react-icons/io5";
-import { MdHistory } from "react-icons/md";
+import { useDispatch } from 'react-redux';
+import { sideBarOptions } from '../../redux/reducer/appFunctions';
+import { getSearchUser } from '../../redux/action/conversations';
 
 const SearchBar = () => {
-    return (
-        <div className='searchBar'>
 
-            <div className='searchBox'>
+    const [search, setSearch] = useState();
+    const dispatch = useDispatch();
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        getSearchUser(dispatch, search);
+        sideBarHandler(5);
+    };
+
+
+
+    const sideBarHandler = (index) => {
+
+        dispatch(sideBarOptions(index));
+
+    };
+
+    useEffect(() => {
+        // console.log(search);
+
+    }, [search]);
+
+
+    return (
+        <div className='searchBar' onSubmit={submitHandler} >
+
+            <form className='searchBox'>
                 <span> <IoSearch /></span>
 
-                <input type="text" placeholder='Enter for Search...' />
+                <input type="text" placeholder='Enter for Search...' onChange={(e) => setSearch(e.target.value)} />
 
 
-            </div>
-            {/* 
-            <div className='searchHistory'>
-                <span> <MdHistory /></span>
-            </div> */}
+            </form>
+
 
 
         </div>

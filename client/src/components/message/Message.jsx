@@ -21,7 +21,7 @@ const Message = () => {
 
         userMessages && setMessages(userMessages);
 
-        console.log(userMessages);
+        // console.log(userMessages);
 
     }, [messages, userMessages]);
 

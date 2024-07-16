@@ -89,7 +89,8 @@ export const userLogin = createSlice({
             localStorage.removeItem('chat-user');
             state.error = action.payload;
 
-        }
+        },
+
 
 
     }
@@ -113,7 +114,9 @@ export const {
 
     getUserRequest,
     getUserSuccess,
-    getUserFail
+    getUserFail,
+
+    
 } = userLogin.actions;
 
 export default userLogin.reducer;
